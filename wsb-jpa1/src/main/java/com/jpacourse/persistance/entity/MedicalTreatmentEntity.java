@@ -10,13 +10,18 @@ public class MedicalTreatmentEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(name = "DESCRIPTION", nullable = false)
 	private String description;
 
+	@Column(name = "TYPE", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
+
+	@ManyToOne
+	private VisitEntity	visitEntity;
 
 	public Long getId() {
 		return id;
@@ -40,6 +45,14 @@ public class MedicalTreatmentEntity {
 
 	public void setType(TreatmentType type) {
 		this.type = type;
+	}
+
+	public VisitEntity getVisitEntity() {
+		return visitEntity;
+	}
+
+	public void setVisitEntity(VisitEntity visitEntity) {
+		this.visitEntity = visitEntity;
 	}
 
 }

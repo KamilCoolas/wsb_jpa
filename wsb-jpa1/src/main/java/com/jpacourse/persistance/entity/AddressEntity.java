@@ -9,15 +9,26 @@ public class AddressEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Long id;
 
+	@Column(name = "CITY")
 	private String city;
 
+	@Column(name = "ADDRESS_LINE1")
 	private String addressLine1;
 
+	@Column(name = "ADDRESS_LINE2")
 	private String addressLine2;
 
+	@Column(name = "POSTAL_CODE")
 	private String postalCode;
+
+	@OneToOne(mappedBy = "addressEntity")
+	private DoctorEntity doctorEntity;
+
+	@OneToOne(mappedBy = "addressEntity")
+	private PatientEntity patientEntity;
 
 	public Long getId() {
 		return id;
@@ -59,4 +70,19 @@ public class AddressEntity {
 		this.postalCode = postalCode;
 	}
 
+	public DoctorEntity getDoctorEntity() {
+		return doctorEntity;
+	}
+
+	public void setDoctorEntity(DoctorEntity doctorEntity) {
+		this.doctorEntity = doctorEntity;
+	}
+
+	public PatientEntity getPatientEntity() {
+		return patientEntity;
+	}
+
+	public void setPatientEntity(PatientEntity patientEntity) {
+		this.patientEntity = patientEntity;
+	}
 }

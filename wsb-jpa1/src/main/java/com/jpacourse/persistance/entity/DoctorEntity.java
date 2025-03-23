@@ -4,31 +4,42 @@ import com.jpacourse.persistance.enums.Specialization;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 @Table(name = "DOCTOR")
 public class DoctorEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Long id;
 
-	@Column(nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ADDRESS_ENTITY", referencedColumnName = "ID")
+	private AddressEntity addressEntity;
+
+	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
 
-	@Column(nullable = false)
+	@Column(name = "LAST_NAME", nullable = false)
 	private String lastName;
 
-	@Column(nullable = false)
+	@Column(name = "TELEPHONE_NUMBER", nullable = false)
 	private String telephoneNumber;
 
+	@Column(name = "EMAIL",nullable = false)
 	private String email;
 
-	@Column(nullable = false)
+	@Column(name = "DOCTOR_NUMBER", nullable = false)
 	private String doctorNumber;
 
-	@Column(nullable = false)
+	@Column(name = "SPECIALIZATION", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
+
+	@ManyToMany(mappedBy = "doctorEntities")
+	private Collection<VisitEntity> visitEntities;
 
 	public Long getId() {
 		return id;
@@ -84,6 +95,22 @@ public class DoctorEntity {
 
 	public void setSpecialization(Specialization specialization) {
 		this.specialization = specialization;
+	}
+
+	public AddressEntity getAddressEntity() {
+		return addressEntity;
+	}
+
+	public void setAddressEntity(AddressEntity addressEntity) {
+		this.addressEntity = addressEntity;
+	}
+
+	public Collection<VisitEntity> getVisitEntities() {
+		return visitEntities;
+	}
+
+	public void setVisitEntities(Collection<VisitEntity> visitEntities) {
+		this.visitEntities = visitEntities;
 	}
 
 }
