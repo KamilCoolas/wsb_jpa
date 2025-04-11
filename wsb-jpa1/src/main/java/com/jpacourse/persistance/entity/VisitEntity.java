@@ -20,21 +20,11 @@ public class VisitEntity {
 	@Column(name = "TIME", nullable = false)
 	private LocalDateTime time;
 
-	@ManyToMany
-	@JoinTable(
-			name = "VISIT_TO_DOCTOR",
-			joinColumns = @JoinColumn(name = "VISIT_ID"),
-			inverseJoinColumns = @JoinColumn(name = "DOCTOR_ID")
-	)
-	private Collection<DoctorEntity> doctorEntities;
+	@ManyToOne
+	private DoctorEntity doctorEntity;
 
-	@ManyToMany
-	@JoinTable(
-			name = "VISIT_TO_PATIENT",
-			joinColumns = @JoinColumn(name = "VISIT_ID"),
-			inverseJoinColumns = @JoinColumn(name = "PATIENT_ID")
-	)
-	private Collection<PatientEntity> patientEntities;
+	@ManyToOne
+	private PatientEntity patientEntity;
 
 	@OneToMany (mappedBy = "visitEntity")
 	private Collection<MedicalTreatmentEntity> medicalTreatmentEntities;
@@ -63,20 +53,20 @@ public class VisitEntity {
 		this.time = time;
 	}
 
-	public Collection<DoctorEntity> getDoctorEntities() {
-		return doctorEntities;
+	public DoctorEntity getDoctorEntity() {
+		return doctorEntity;
 	}
 
-	public void setDoctorEntities(Collection<DoctorEntity> doctorEntities) {
-		this.doctorEntities = doctorEntities;
+	public void setDoctorEntity(DoctorEntity doctorEntity) {
+		this.doctorEntity = doctorEntity;
 	}
 
-	public Collection<PatientEntity> getPatientEntities() {
-		return patientEntities;
+	public PatientEntity getPatientEntity() {
+		return patientEntity;
 	}
 
-	public void setPatientEntities(Collection<PatientEntity> patientEntities) {
-		this.patientEntities = patientEntities;
+	public void setPatientEntity(PatientEntity patientEntity) {
+		this.patientEntity = patientEntity;
 	}
 
 	public Collection<MedicalTreatmentEntity> getMedicalTreatmentEntities() {
@@ -86,5 +76,4 @@ public class VisitEntity {
 	public void setMedicalTreatmentEntities(Collection<MedicalTreatmentEntity> medicalTreatmentEntities) {
 		this.medicalTreatmentEntities = medicalTreatmentEntities;
 	}
-
 }

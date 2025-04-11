@@ -4,8 +4,8 @@ insert into address (id, address_line1, address_line2, city, postal_code)
             values (902, 'abc', 'def', 'city', '60-401');
 insert into doctor (id, address_entity, doctor_number, email, first_name, last_name, telephone_number, specialization)
             values (1, 901, '5', 'email@email', 'Adam', 'Johnson', '1234', 'SURGEON');
-insert into patient (id, address_entity, date_of_birth, patient_number, email, first_name, last_name, telephone_number)
-            values (1, 902, '1998-12-31', 5, 'email@email', 'John', 'Adamson', '54321');
+insert into patient (id, address_entity, date_of_birth, patient_number, email, first_name, last_name, telephone_number, external_id)
+            values (1, 902, '1998-12-31', 5, 'email@email', 'John', 'Adamson', '54321', 15);
 insert into visit (id, time, description)
             values (1, '2022-12-31 23.59.59', 'Just Visit');
 insert into visit (id, time, description)

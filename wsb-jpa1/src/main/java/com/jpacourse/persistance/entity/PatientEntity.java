@@ -18,14 +18,17 @@ public class PatientEntity {
 	@JoinColumn(name = "address_entity", referencedColumnName = "id")
 	private AddressEntity addressEntity;
 
-	@Column(name = "FIRST_NAME ",nullable = false)
+	@Column(name = "FIRST_NAME",nullable = false)
 	private String firstName;
 
-	@Column(name = "LAST_NAME ",nullable = false)
+	@Column(name = "LAST_NAME",nullable = false)
 	private String lastName;
 
 	@Column(name = "TELEPHONE_NUMBER",nullable = false)
 	private String telephoneNumber;
+
+	@Column(name = "EXTERNAL_ID")
+	private Long externalId;
 
 	@Column(name = "EMAIL",nullable = false)
 	private String email;
@@ -36,8 +39,16 @@ public class PatientEntity {
 	@Column(name = "date_of_birth", nullable = false)
 	private LocalDate dateOfBirth;
 
-	@ManyToMany(mappedBy = "patientEntities")
+	@OneToMany (mappedBy = "patientEntity")
 	private Collection<VisitEntity> visitEntities;
+
+	public Long getExternalId() {
+		return externalId;
+	}
+
+	public void setExternalId(Long externalId) {
+		this.externalId = externalId;
+	}
 
 	public Long getId() {
 		return id;
