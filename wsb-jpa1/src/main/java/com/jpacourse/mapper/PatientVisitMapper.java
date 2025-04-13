@@ -41,12 +41,12 @@ public final class PatientVisitMapper
         visitEntity.setId(patientVisitTO.getId());
         visitEntity.setDescription(patientVisitTO.getDescription());
         visitEntity.setTime(patientVisitTO.getTime());
-        if (visitEntity.getDoctorEntity() != null) {
-            DoctorEntity doctorEntity = visitEntity.getDoctorEntity();
-            doctorEntity.setFirstName(patientVisitTO.getDoctorFirstName());
-            doctorEntity.setLastName(patientVisitTO.getDoctorLastName());
-            visitEntity.setDoctorEntity(doctorEntity);
-        }
+//        if (visitEntity.getDoctorEntity() != null) {
+//            DoctorEntity doctorEntity = visitEntity.getDoctorEntity();
+//            doctorEntity.setFirstName(patientVisitTO.getDoctorFirstName());
+//            doctorEntity.setLastName(patientVisitTO.getDoctorLastName());
+//            visitEntity.setDoctorEntity(doctorEntity);
+//        }
         List<MedicalTreatmentEntity> medicalTreatmentEntityList = new ArrayList<>();
         for (MedicalTreatmentTO medicalTreatmentTO : patientVisitTO.getMedicalTreatments()) {
             medicalTreatmentEntityList.add(MedicalTreatmentMapper.mapToEntity(medicalTreatmentTO));

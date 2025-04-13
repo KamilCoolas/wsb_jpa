@@ -16,7 +16,6 @@ public class MedicalTreatmentTO implements Serializable
 
     private TreatmentType type;
 
-    private PatientVisitTO visit;
 
     public Long getId() {
         return id;
@@ -42,11 +41,4 @@ public class MedicalTreatmentTO implements Serializable
         this.type = type;
     }
 
-    public PatientVisitTO getVisit() {
-        return visit;
-    }
-
-    public void setVisit(PatientVisitTO visit) {
-        this.visit = visit;
-    }
 }

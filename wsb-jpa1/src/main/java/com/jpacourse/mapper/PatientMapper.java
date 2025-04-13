@@ -1,11 +1,7 @@
 package com.jpacourse.mapper;
 
-import com.jpacourse.dto.AddressTO;
-import com.jpacourse.dto.MedicalTreatmentTO;
 import com.jpacourse.dto.PatientTO;
 import com.jpacourse.dto.PatientVisitTO;
-import com.jpacourse.persistance.entity.AddressEntity;
-import com.jpacourse.persistance.entity.MedicalTreatmentEntity;
 import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 

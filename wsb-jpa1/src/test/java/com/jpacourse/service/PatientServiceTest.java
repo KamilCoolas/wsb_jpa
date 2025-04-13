@@ -1,18 +1,12 @@
 package com.jpacourse.service;
 
 import com.jpacourse.dto.PatientTO;
-import com.jpacourse.persistance.dao.AddressDao;
-import com.jpacourse.persistance.entity.AddressEntity;
-import com.jpacourse.persistance.entity.PatientEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
+@SpringBootTest
 class PatientServiceTest {
 
     @Autowired
