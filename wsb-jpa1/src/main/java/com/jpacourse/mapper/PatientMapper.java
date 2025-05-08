@@ -1,7 +1,7 @@
 package com.jpacourse.mapper;
 
 import com.jpacourse.dto.PatientTO;
-import com.jpacourse.dto.PatientVisitTO;
+import com.jpacourse.dto.VisitsDTO;
 import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 
@@ -27,11 +27,11 @@ public final class PatientMapper
         patientTO.setPatientNumber(patientEntity.getPatientNumber());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
         patientTO.setAddress(AddressMapper.mapToTO(patientEntity.getAddressEntity()));
-        List<PatientVisitTO> PatientVisitTOList = new ArrayList<>();
+        List<VisitsDTO> visitsDTOList = new ArrayList<>();
         for (VisitEntity visitEntity : patientEntity.getVisitEntities()){
-            PatientVisitTOList.add(PatientVisitMapper.mapToTO(visitEntity));
+            visitsDTOList.add(VisitMapper.mapToTO(visitEntity));
         }
-        patientTO.setVisits(PatientVisitTOList);
+        patientTO.setVisits(visitsDTOList);
         return patientTO;
     }
 
@@ -52,8 +52,8 @@ public final class PatientMapper
         patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
         patientEntity.setAddressEntity(AddressMapper.mapToEntity(patientTO.getAddress()));
         List<VisitEntity> visitEntityListEntity = new ArrayList<>();
-        for (PatientVisitTO patientVisitTO : patientTO.getVisits()){
-            visitEntityListEntity.add(PatientVisitMapper.mapToEntity(patientVisitTO));
+        for (VisitsDTO visitsDTO : patientTO.getVisits()){
+            visitEntityListEntity.add(VisitMapper.mapToEntity(visitsDTO));
         }
         return patientEntity;
     }

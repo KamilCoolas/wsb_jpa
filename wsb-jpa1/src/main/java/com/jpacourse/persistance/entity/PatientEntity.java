@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "PATIENT")
@@ -39,7 +41,8 @@ public class PatientEntity {
 	@Column(name = "date_of_birth", nullable = false)
 	private LocalDate dateOfBirth;
 
-	@OneToMany (mappedBy = "patientEntity")
+	@OneToMany(mappedBy = "patientEntity", fetch = FetchType.EAGER)
+	@Fetch(FetchMode.JOIN)
 	private Collection<VisitEntity> visitEntities;
 
 	public Long getExternalId() {

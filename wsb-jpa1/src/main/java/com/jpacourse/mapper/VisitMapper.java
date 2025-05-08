@@ -1,46 +1,45 @@
 package com.jpacourse.mapper;
 
 import com.jpacourse.dto.MedicalTreatmentTO;
-import com.jpacourse.dto.PatientVisitTO;
-import com.jpacourse.persistance.entity.DoctorEntity;
+import com.jpacourse.dto.VisitsDTO;
 import com.jpacourse.persistance.entity.MedicalTreatmentEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class PatientVisitMapper
+public final class VisitMapper
 {
 
-    public static PatientVisitTO mapToTO(final VisitEntity visitEntity)
+    public static VisitsDTO mapToTO(final VisitEntity visitEntity)
     {
         if (visitEntity == null)
         {
             return null;
         }
-        final PatientVisitTO patientVisitTO = new PatientVisitTO();
-        patientVisitTO.setId(visitEntity.getId());
-        patientVisitTO.setDescription(visitEntity.getDescription());
-        patientVisitTO.setTime(visitEntity.getTime());
-        patientVisitTO.setDoctorFirstName(visitEntity.getDoctorEntity().getFirstName());
-        patientVisitTO.setDoctorLastName(visitEntity.getDoctorEntity().getLastName());
+        final VisitsDTO visitsDTO = new VisitsDTO();
+        visitsDTO.setId(visitEntity.getId());
+        visitsDTO.setDescription(visitEntity.getDescription());
+        visitsDTO.setTime(visitEntity.getTime());
+        visitsDTO.setDoctorFirstName(visitEntity.getDoctorEntity().getFirstName());
+        visitsDTO.setDoctorLastName(visitEntity.getDoctorEntity().getLastName());
         List<MedicalTreatmentTO> medicalTreatmentTOList = new ArrayList<>();
         for (MedicalTreatmentEntity medicalTreatmentEntity : visitEntity.getMedicalTreatmentEntities()) {
             medicalTreatmentTOList.add(MedicalTreatmentMapper.mapToTO(medicalTreatmentEntity));
         }
-        patientVisitTO.setMedicalTreatments(medicalTreatmentTOList);
-        return patientVisitTO;
+        visitsDTO.setMedicalTreatments(medicalTreatmentTOList);
+        return visitsDTO;
     }
 
-    public static VisitEntity mapToEntity(final PatientVisitTO patientVisitTO)
+    public static VisitEntity mapToEntity(final VisitsDTO visitsDTO)
     {
-        if(patientVisitTO == null)
+        if(visitsDTO == null)
         {
             return null;
         }
         VisitEntity visitEntity = new VisitEntity();
-        visitEntity.setId(patientVisitTO.getId());
-        visitEntity.setDescription(patientVisitTO.getDescription());
-        visitEntity.setTime(patientVisitTO.getTime());
+        visitEntity.setId(visitsDTO.getId());
+        visitEntity.setDescription(visitsDTO.getDescription());
+        visitEntity.setTime(visitsDTO.getTime());
 //        if (visitEntity.getDoctorEntity() != null) {
 //            DoctorEntity doctorEntity = visitEntity.getDoctorEntity();
 //            doctorEntity.setFirstName(patientVisitTO.getDoctorFirstName());
@@ -48,7 +47,7 @@ public final class PatientVisitMapper
 //            visitEntity.setDoctorEntity(doctorEntity);
 //        }
         List<MedicalTreatmentEntity> medicalTreatmentEntityList = new ArrayList<>();
-        for (MedicalTreatmentTO medicalTreatmentTO : patientVisitTO.getMedicalTreatments()) {
+        for (MedicalTreatmentTO medicalTreatmentTO : visitsDTO.getMedicalTreatments()) {
             medicalTreatmentEntityList.add(MedicalTreatmentMapper.mapToEntity(medicalTreatmentTO));
         }
         visitEntity.setMedicalTreatmentEntities(medicalTreatmentEntityList);

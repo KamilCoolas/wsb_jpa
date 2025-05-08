@@ -1,12 +1,10 @@
 package com.jpacourse.dto;
 
-import com.jpacourse.persistance.entity.*;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
-public class PatientVisitTO implements Serializable
+public class VisitsDTO implements Serializable
 {
     private Long id;
 
