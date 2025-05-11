@@ -41,7 +41,7 @@ public class PatientEntity {
 	@Column(name = "date_of_birth", nullable = false)
 	private LocalDate dateOfBirth;
 
-	@OneToMany(mappedBy = "patientEntity", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "patientEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch(FetchMode.JOIN)
 	private Collection<VisitEntity> visitEntities;
 

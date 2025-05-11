@@ -1,6 +1,7 @@
 package com.jpacourse.persistance.dao.impl;
 
 import com.jpacourse.persistance.dao.PatientDao;
+import com.jpacourse.persistance.entity.DoctorEntity;
 import com.jpacourse.persistance.entity.MedicalTreatmentEntity;
 import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
@@ -8,6 +9,7 @@ import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -37,5 +39,17 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
                 "SELECT p FROM PatientEntity p WHERE p.email LIKE :fragment", PatientEntity.class);
         query.setParameter("fragment", "%" + fragment + "%");
         return query.getResultList();
+    }
+    @Override
+    public void addNewVisitEntity(long patientId, long doctorId, LocalDateTime visitDate, String visitDescription)
+    {
+        PatientEntity patient = entityManager.find(PatientEntity.class, patientId);
+        DoctorEntity doctor = entityManager.find(DoctorEntity.class, doctorId);
+        VisitEntity visit = new VisitEntity();
+        visit.setTime(visitDate);
+        visit.setDescription(visitDescription);
+        visit.setPatientEntity(patient);
+        visit.setDoctorEntity(doctor);
+        entityManager.persist(visit);
     }
 }

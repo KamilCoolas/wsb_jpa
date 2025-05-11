@@ -38,7 +38,7 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
-	@OneToMany (mappedBy = "doctorEntity")
+	@OneToMany (mappedBy = "doctorEntity", cascade = CascadeType.ALL)
 	private Collection<VisitEntity> visitEntities;
 
 	public Long getId() {

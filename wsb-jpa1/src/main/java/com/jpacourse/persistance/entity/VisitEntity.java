@@ -26,7 +26,7 @@ public class VisitEntity {
 	@ManyToOne
 	private PatientEntity patientEntity;
 
-	@OneToMany (mappedBy = "visitEntity")
+	@OneToMany (mappedBy = "visitEntity", cascade = CascadeType.ALL)
 	private Collection<MedicalTreatmentEntity> medicalTreatmentEntities;
 
 	public Long getId() {
