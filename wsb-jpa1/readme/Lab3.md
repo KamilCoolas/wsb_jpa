@@ -26,4 +26,7 @@ Nastepnie zmien adnotacje na
 
 i powtorz test i obserwacje. Wnioski zapisz na dole tego pliku i skomituj.
 
+Przy Select wykonał 7 selectów z JOINami do innych tabel
+Przy JOIN wykonał 12 selectów z JOINami
+
 Do wybranej encji dodaj wersjonowanie, oraz napisz test (w DAO) sprawdzajacy rownolegla modyfikacje (OptimisticLock)

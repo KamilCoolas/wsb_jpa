@@ -16,6 +16,10 @@ public class PatientEntity {
 	@Column(name = "ID")
 	private Long id;
 
+	@Version
+	@Column(name = "VERSION", nullable = false, columnDefinition = "BIGINT DEFAULT 0")
+	private Long version;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_entity", referencedColumnName = "id")
 	private AddressEntity addressEntity;
@@ -41,7 +45,7 @@ public class PatientEntity {
 	@Column(name = "date_of_birth", nullable = false)
 	private LocalDate dateOfBirth;
 
-	@Fetch(FetchMode.SELECT)
+	@Fetch(FetchMode.JOIN)
 	@OneToMany(mappedBy = "patientEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Collection<VisitEntity> visitEntities;
 
@@ -123,5 +127,11 @@ public class PatientEntity {
 	public void setVisitEntities(Collection<VisitEntity> visitEntities) {
 		this.visitEntities = visitEntities;
 	}
+	public Long getVersion() {
+		return version;
+	}
 
+	public void setVersion(Long version) {
+		this.version = version;
+	}
 }
