@@ -18,7 +18,7 @@ public class VisitServiceTest {
 
         @Transactional
         @Test
-        public void testShouldFindPatientById() {
+        public void testShouldFindPatientVisitsById() {
             // given
             // when
             List<VisitsDTO> visitlist = visitService.patientVisits(1L);

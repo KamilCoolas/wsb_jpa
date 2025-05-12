@@ -36,6 +36,9 @@ class PatientServiceTest {
     public void testIfPatientDeletedCascade() {
         // given
         // when
+        PatientTO patientTOBefore = patientService.findById(1L);
+        List<VisitsDTO> visitsDTOListBefore = visitService.patientVisits(1L);
+        DoctorTO doctorTOBefore = doctorService.findById(1L);
         patientService.deleteById(1L);
         PatientTO patientTO = patientService.findById(1L);
         List<VisitsDTO> visitsDTOList = visitService.patientVisits(1L);

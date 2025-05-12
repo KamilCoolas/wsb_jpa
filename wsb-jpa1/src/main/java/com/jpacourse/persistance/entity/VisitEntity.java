@@ -20,10 +20,10 @@ public class VisitEntity {
 	@Column(name = "TIME", nullable = false)
 	private LocalDateTime time;
 
-	@ManyToOne (cascade = CascadeType.ALL)
+	@ManyToOne //(cascade = CascadeType.ALL)
 	private DoctorEntity doctorEntity;
 
-	@ManyToOne (cascade = CascadeType.ALL)
+	@ManyToOne //(cascade = CascadeType.ALL)
 	private PatientEntity patientEntity;
 
 	@OneToMany (mappedBy = "visitEntity", cascade = CascadeType.ALL)
