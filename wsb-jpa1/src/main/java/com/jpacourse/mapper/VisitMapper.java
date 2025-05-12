@@ -20,6 +20,7 @@ public final class VisitMapper
         visitsDTO.setId(visitEntity.getId());
         visitsDTO.setDescription(visitEntity.getDescription());
         visitsDTO.setTime(visitEntity.getTime());
+        visitsDTO.setPatientTO(PatientMapper.mapToTO(visitEntity.getPatientEntity()));
         visitsDTO.setDoctorFirstName(visitEntity.getDoctorEntity().getFirstName());
         visitsDTO.setDoctorLastName(visitEntity.getDoctorEntity().getLastName());
         List<MedicalTreatmentTO> medicalTreatmentTOList = new ArrayList<>();
@@ -46,6 +47,7 @@ public final class VisitMapper
 //            doctorEntity.setLastName(patientVisitTO.getDoctorLastName());
 //            visitEntity.setDoctorEntity(doctorEntity);
 //        }
+        visitEntity.setPatientEntity(PatientMapper.mapToEntity(visitsDTO.getPatientTO()));
         List<MedicalTreatmentEntity> medicalTreatmentEntityList = new ArrayList<>();
         for (MedicalTreatmentTO medicalTreatmentTO : visitsDTO.getMedicalTreatments()) {
             medicalTreatmentEntityList.add(MedicalTreatmentMapper.mapToEntity(medicalTreatmentTO));

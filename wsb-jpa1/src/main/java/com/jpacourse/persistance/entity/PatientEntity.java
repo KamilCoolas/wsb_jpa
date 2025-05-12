@@ -41,8 +41,7 @@ public class PatientEntity {
 	@Column(name = "date_of_birth", nullable = false)
 	private LocalDate dateOfBirth;
 
-	@OneToMany(mappedBy = "patientEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@Fetch(FetchMode.JOIN)
+	@OneToMany(mappedBy = "patientEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Collection<VisitEntity> visitEntities;
 
 	public Long getExternalId() {

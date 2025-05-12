@@ -41,7 +41,7 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         return query.getResultList();
     }
     @Override
-    public void addNewVisitEntity(long patientId, long doctorId, LocalDateTime visitDate, String visitDescription)
+    public Long addNewVisitEntity(long patientId, long doctorId, LocalDateTime visitDate, String visitDescription)
     {
         PatientEntity patient = entityManager.find(PatientEntity.class, patientId);
         DoctorEntity doctor = entityManager.find(DoctorEntity.class, doctorId);
@@ -51,5 +51,7 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         visit.setPatientEntity(patient);
         visit.setDoctorEntity(doctor);
         entityManager.persist(visit);
+        entityManager.refresh(patient);
+        return visit.getId();
     }
 }

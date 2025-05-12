@@ -12,6 +12,8 @@ public class VisitsDTO implements Serializable
 
     private LocalDateTime time;
 
+    private PatientTO patientTO;
+
     private String doctorFirstName;
 
     private String doctorLastName;
@@ -64,5 +66,13 @@ public class VisitsDTO implements Serializable
 
     public void setMedicalTreatments(Collection<MedicalTreatmentTO> medicalTreatments) {
         this.medicalTreatments = medicalTreatments;
+    }
+
+    public PatientTO getPatientTO() {
+        return patientTO;
+    }
+
+    public void setPatientTO(PatientTO patientTO) {
+        this.patientTO = patientTO;
     }
 }

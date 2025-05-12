@@ -55,6 +55,7 @@ public final class PatientMapper
         for (VisitsDTO visitsDTO : patientTO.getVisits()){
             visitEntityListEntity.add(VisitMapper.mapToEntity(visitsDTO));
         }
+        patientEntity.setVisitEntities(visitEntityListEntity);
         return patientEntity;
     }
 }
